@@ -1,3 +1,17 @@
+# 2020.11.22
+This repo is forked from https://github.com/siavash9000/im2txt_demo for purpose of class project. In the process of changing things right now.
+
+Added changes to the original code, updated several functions to make things work with python3 and my current tensorflow version '1.13.1'.
+
+Updated 2M fine-tuned model to be "model_renamed.ckpt-2000000", changed layer names to be compatible with new tensorflow naming versions. Yet to upload model to Google Drive somewhere.
+
+Git clone and use follow command line to run: 
+$ python run_inference.py --checkpoint_path="../../im2txt_pretrained/model_renamed.ckpt-2000000" --vocab_file="../../im2txt_pretrained/word_counts.txt" --input_files="../../imgs/bikes.jpg"
+
+
+
+# Below is the Original README.md
+
 # im2txt_demo
 im2txt + pretrained models + docker = easy tryout
 
