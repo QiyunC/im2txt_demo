@@ -1,5 +1,5 @@
 # 2020.11.22
-This repo is forked from https://github.com/siavash9000/im2txt_demo for purpose of class project. In the process of changing things right now.
+This repo is forked from https://github.com/siavash9000/im2txt_demo for purpose of class project. Still in the process of changing things right now.
 
 Added changes to the original code, updated several functions to make things work with python3 and my current tensorflow version '1.13.1'.
 
