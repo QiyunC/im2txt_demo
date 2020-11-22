@@ -1,0 +1,6 @@
+'../../imgs/images.jpg','../../imgs/bikes.jpg'
+
+
+"../../imgs/images.jpg,../../imgs/bikes.jpg"
+
+prefix='
