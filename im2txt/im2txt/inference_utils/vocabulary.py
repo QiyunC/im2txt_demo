@@ -47,6 +47,9 @@ class Vocabulary(object):
     with tf.gfile.GFile(vocab_file, mode="r") as f:
       reverse_vocab = list(f.readlines())
     reverse_vocab = [line.split()[0] for line in reverse_vocab]
+    # print("BEING RUN VOCAB")
+    # reverse_vocab = [eval(line.split()[0]).decode() for line in reverse_vocab]
+    # https://edouardfouche.com/Fun-with-Tensorflow-im2txt/ change 1122!
     assert start_word in reverse_vocab
     assert end_word in reverse_vocab
     if unk_word not in reverse_vocab:

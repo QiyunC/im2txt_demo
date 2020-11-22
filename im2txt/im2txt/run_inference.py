@@ -57,8 +57,16 @@ def main(_):
   vocab = vocabulary.Vocabulary(FLAGS.vocab_file)
 
   filenames = []
-  for file_pattern in FLAGS.input_files.split(","):
-    filenames.extend(tf.gfile.Glob(file_pattern))
+  # print("FLAGS.input_files", FLAGS.input_files)
+  for file_pattern in FLAGS.input_files.split(","): # original might be right?
+  # for file_pattern in FLAGS.input_files.split(","):
+      print("HIIII", file_pattern)
+  #   # filenames.extend(tf.gfile.Glob(file_pattern))
+  #   filenames.extend(tf.gfile.Glob("*.jpg"))
+  # print("filenames list", filenames)
+
+      filenames.extend(tf.gfile.Glob(file_pattern))
+  print("filenames", filenames)
   tf.logging.info("Running caption generation on %d files matching %s",
                   len(filenames), FLAGS.input_files)
 
@@ -70,9 +78,18 @@ def main(_):
     # beam search parameters. See caption_generator.py for a description of the
     # available beam search parameters.
     generator = caption_generator.CaptionGenerator(model, vocab)
-
+    print("generator")
     for filename in filenames:
-      with tf.gfile.GFile(filename, "r") as f:
+      # print("*" * 10)
+      # print("\n" * 5)
+      # print("FILENAME", filename)
+      # print("\n" * 5)
+      # print("*" * 10)
+
+      # with tf.gfile.GFile(filename, "r") as f:
+      with tf.gfile.GFile(filename, 'rb') as f:
+
+        # https://github.com/tensorflow/tensorflow/issues/11312
         image = f.read()
       captions = generator.beam_search(sess, image)
       print("Captions for image %s:" % os.path.basename(filename))
@@ -81,7 +98,7 @@ def main(_):
         sentence = [vocab.id_to_word(w) for w in caption.sentence[1:-1]]
         sentence = " ".join(sentence)
         print("  %d) %s (p=%f)" % (i, sentence, math.exp(caption.logprob)))
-
+  print("DONE :)") 
 
 if __name__ == "__main__":
   tf.app.run()

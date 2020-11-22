@@ -46,6 +46,7 @@ class Caption(object):
     self.metadata = metadata
 
   def __cmp__(self, other):
+    print("cmp you are outdated :)")
     """Compares Captions by score."""
     assert isinstance(other, Caption)
     if self.score == other.score:
@@ -54,6 +55,20 @@ class Caption(object):
       return -1
     else:
       return 1
+
+  def __eq__(self, other):
+    # print("__eq__ called...")
+    assert isinstance(other, Caption)
+    if self.score == other.score:
+      return True
+    return False
+
+  def __lt__(self, other):
+    # print("__lt__ called...")
+    assert isinstance(other, Caption)
+    if self.score < other.score:
+      return True
+    return False
 
 
 class TopN(object):
@@ -71,6 +86,9 @@ class TopN(object):
     """Pushes a new element."""
     assert self._data is not None
     if len(self._data) < self._n:
+      # print("type(x)", type(x))
+      # print("type(self._data", type(self._data), self._data)
+      # print("self._n", self._n)
       heapq.heappush(self._data, x)
     else:
       heapq.heappushpop(self._data, x)
