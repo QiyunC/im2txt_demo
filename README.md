@@ -8,7 +8,8 @@ Updated 2M fine-tuned model to be "model_renamed.ckpt-2000000", changed layer na
 Git clone and use follow command line to run: 
 $ python run_inference.py --checkpoint_path="../../im2txt_pretrained/model_renamed.ckpt-2000000" --vocab_file="../../im2txt_pretrained/word_counts.txt" --input_files="../../imgs/bikes.jpg"
 
-
+One of the places I see as a reference while debugging:
+https://edouardfouche.com/Fun-with-Tensorflow-im2txt/
 
 # Below is the Original README.md
 
